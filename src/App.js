@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import FunctionalComponent from './components/FunctionalComponent';
 import './App.css';
 
-function App() {
-  return (
+class App extends Component {
+  state = {
+    val: 1
+  };
+
+  componentDidMount() {
+    setInterval( () => {
+      this.setState({
+        val: 1
+      })
+    }, 3000)
+  }
+
+  render() {
+    return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       <FunctionalComponent val={this.state.val} />
       </header>
     </div>
   );
+  }
+  
 }
 
 export default App;
